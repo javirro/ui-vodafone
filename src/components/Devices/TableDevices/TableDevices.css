@@ -12,6 +12,9 @@
       text-align: left;
       border-bottom: 1px solid rgb(63, 63, 63);
     }
+    th:last-child {
+      text-align: right;
+    }
   }
   tbody {
     tr {
@@ -26,7 +29,10 @@
       background-color: rgb(250, 247, 247);
     }
     td:last-child {
+      text-align: right;
       display: flex;
+      width: 100%;
+      justify-content: flex-end;
       gap: var(--size12);
       img {
         width: var(--size24);
