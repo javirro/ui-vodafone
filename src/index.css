@@ -30,6 +30,8 @@
   --size80: 5rem;
   --size88: 5.5rem;
   --size96: 6rem;
+  --size200: 12.5rem;
+  --size300: 18.75rem;
 }
 
 @media (max-width: 600px) {
