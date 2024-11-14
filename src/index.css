@@ -1,4 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 :root {
+  font-family: Inter;
+  font-size: 16px;
   --remMobile: calc(16 * 100vw / 360);
   --remDesktop1140: calc(16 * 100vw / 1140);
   --remDesktop1440: calc(16 * 100vw / 1440);
@@ -51,4 +54,10 @@
   :root {
     font-size: var(--remDesktop1920);
   }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
