@@ -1,0 +1,45 @@
+.devices {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+  padding: var(--size12);
+  .options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    .actions {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: var(--size12);
+      padding: var(--size12);
+      border: none;
+      border-radius: var(--size6);
+      color: white;
+      background-color: rgb(119, 119, 119);
+      font-size: var(--size20);
+      img {
+        width: var(--size24);
+      }
+    }
+    .right {
+      display: flex;
+      align-items: center;
+      gap: var(--size16);
+      font-size: var(--size20);
+      select {
+        width: var(--size60);
+        padding: var(--size8);
+        border: none;
+        border-radius: var(--size6);
+        font-size: var(--size16);
+        background-color: rgb(234, 232, 232);
+        color: black;
+        cursor: pointer;
+      }
+    }
+  }
+}

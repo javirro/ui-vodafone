@@ -1,0 +1,9 @@
+#page-selector{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    cursor: pointer;
+    width: var(--size40);
+  }
+}
