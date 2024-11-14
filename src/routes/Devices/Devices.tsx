@@ -2,6 +2,7 @@ import { useState } from 'react'
 import PageSelector from '../../components/Devices/PageSelector/PageSelector'
 import { images } from '../../images/general'
 import './Devices.css'
+import TableDevices from '../../components/Devices/TableDevices/TableDevices'
 
 const Devices = () => {
   const [limit, setLimit] = useState(10)
@@ -30,6 +31,7 @@ const Devices = () => {
             <PageSelector page={page} setPage={setPage} />
           </section>
         </div>
+        <TableDevices />
       </div>
     </section>
   )

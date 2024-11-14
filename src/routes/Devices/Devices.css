@@ -5,6 +5,7 @@
   justify-content: flex-start;
   width: 100%;
   padding: var(--size12);
+  gap: var(--size24);
   .options {
     display: flex;
     align-items: center;
