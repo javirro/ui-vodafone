@@ -3,6 +3,7 @@ import CustomMarker from '../CustomMarker/CustomMarker'
 import { LatLngExpression } from 'leaflet'
 import { useGetDevices } from '../../../hooks/useGetData'
 import Spinner from '../../Spinner/Spinner'
+import MarkerClusterGroup from 'react-leaflet-cluster'
 
 import 'leaflet/dist/leaflet.css'
 import './Map.css'
@@ -17,7 +18,9 @@ const Map = () => {
   return (
     <MapContainer className="map" center={mapCenterMadrid} zoom={4}>
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" /> {/* This is the OpenStreetMap tile layer */}
-      {devices?.map((d) => <CustomMarker device={d} key={d.id}/>)}
+      <MarkerClusterGroup>
+        {devices?.map((d) => <CustomMarker device={d} key={d.id} />)}
+      </MarkerClusterGroup>
     </MapContainer>
   )
 }
