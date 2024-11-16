@@ -3,7 +3,7 @@ import FormAddDevice from '../AddDeviceModal/FormAddDevice'
 import BaseModal from '../BaseModal/BaseModal'
 import { useGetDevice } from '../../../hooks/useGetData'
 import useErrorLoading from '../../../hooks/useErrorLoading'
-import { AddDeviceForm } from '../../../types/types'
+import { AddDeviceForm, Device } from '../../../types/types'
 import { useState } from 'react'
 import { updateDevice } from '../../../api/updateDevice'
 
@@ -13,9 +13,8 @@ interface EditDeviceModalProps {
   deviceId: number
 }
 
-const EditDeviceModalBody = ({ closeModal, deviceId, refreshDevices }: EditDeviceModalProps) => {
+const EditForm = ({ device, closeModal, refreshDevices }: { device: Device; closeModal: () => void; refreshDevices: () => void }) => {
   const { error, setError, loading, setLoading } = useErrorLoading(5000)
-  const { device, isLoading } = useGetDevice(Number(deviceId))
   const [data, setData] = useState<AddDeviceForm>({
     name: device?.name as string,
     phone: device?.phone as string,
@@ -23,24 +22,16 @@ const EditDeviceModalBody = ({ closeModal, deviceId, refreshDevices }: EditDevic
     lon: device?.lon as number,
     lat: device?.lat as number,
   })
-  if (isLoading) {
-    return (
-      <div className="add-device-modal">
-        <Spinner size="big" />
-      </div>
-    )
-  }
-  if (!device) return null
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setData({ ...data, [e.target.name]: e.target.value })
   }
 
   const handleOnSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    if (!device) return
     try {
       setLoading(true)
-      await updateDevice(device.id, data)
+      await updateDevice(device?.id, data)
       refreshDevices()
     } catch (error) {
       console.error('Error editing device', error)
@@ -57,6 +48,22 @@ const EditDeviceModalBody = ({ closeModal, deviceId, refreshDevices }: EditDevic
       {loading && <Spinner size={'small'} />}
     </div>
   )
+}
+
+const EditDeviceModalBody = ({ closeModal, deviceId, refreshDevices }: EditDeviceModalProps) => {
+  const { device, isLoading } = useGetDevice(Number(deviceId))
+  if (isLoading) {
+    return (
+      <div className="add-device-modal">
+        <Spinner size="big" />
+      </div>
+    )
+  }
+  if (device && !isLoading) {
+    return <EditForm device={device} closeModal={closeModal} refreshDevices={refreshDevices} />
+  } else {
+    return <p>Device not found</p>
+  }
 }
 
 const EditDeviceModal = ({ closeModal, deviceId, refreshDevices }: EditDeviceModalProps) => {

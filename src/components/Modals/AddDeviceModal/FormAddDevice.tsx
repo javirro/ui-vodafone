@@ -24,7 +24,7 @@ const FormAddDevice = ({ data, handleChange, handleOnSubmit, loading }: FormAddD
         name="lastConnection"
         type="date"
         placeholder="Select last connection"
-        value={data.lastConnection.toString()}
+        value={data?.lastConnection?.toString()}
         onChange={handleChange}
       />
       <TextInputBox
@@ -32,7 +32,7 @@ const FormAddDevice = ({ data, handleChange, handleOnSubmit, loading }: FormAddD
         name="lat"
         type="number"
         placeholder="Enter latitude"
-        value={data.lat.toString()}
+        value={data?.lat?.toString()}
         onChange={handleChange}
         max={90}
         min={-90}
@@ -43,7 +43,7 @@ const FormAddDevice = ({ data, handleChange, handleOnSubmit, loading }: FormAddD
         name="lon"
         type="number"
         placeholder="Enter longitude"
-        value={data.lon.toString()}
+        value={data?.lon?.toString()}
         onChange={handleChange}
         max={180}
         min={-180}

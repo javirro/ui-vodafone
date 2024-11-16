@@ -35,7 +35,7 @@ const Devices = () => {
         <DeleteDeviceModal closeModal={() => setDeleteDeviceModal(0)} deviceId={deleteDeviceModal} refreshDevices={refreshDevices} />
       )}
       {editDeviceModal > 0 && (
-        <EditDeviceModal closeModal={() => setEditDeviceModal(0)} deviceId={deleteDeviceModal} refreshDevices={refreshDevices} />
+        <EditDeviceModal closeModal={() => {setEditDeviceModal(0)}} deviceId={editDeviceModal} refreshDevices={refreshDevices} />
       )}
       <div className="devices">
         <div className="options">
