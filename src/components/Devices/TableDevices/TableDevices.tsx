@@ -4,19 +4,32 @@ import Spinner from '../../Spinner/Spinner'
 
 import './TableDevices.css'
 
-const CommonColumn = ({ setDeleteDeviceModal, id }: { setDeleteDeviceModal: (s: number) => void; id: number }) => {
+interface TableDevicesProps {
+  setDeleteDeviceModal: (s: number) => void
+  setEditDeviceModal: (s: number) => void
+}
+
+interface CommonColumnProps extends TableDevicesProps {
+  id: number
+}
+
+
+const CommonColumn = ({ setDeleteDeviceModal, setEditDeviceModal, id }: CommonColumnProps) => {
   const handleDelete = () => {
     setDeleteDeviceModal(id)
   }
+  const handleEdit = () => {
+    setEditDeviceModal(id)
+  }
   return (
     <td>
-      <img src={images.editIcon} alt="edit" />
+      <img src={images.editIcon} alt="edit" onClick={handleEdit}/>
       <img src={images.deleteIcon} alt="delete" onClick={handleDelete} />
     </td>
   )
 }
 
-const TableDevices = ({ setDeleteDeviceModal }: { setDeleteDeviceModal: (s: number) => void }) => {
+const TableDevices = ({ setDeleteDeviceModal, setEditDeviceModal }: TableDevicesProps) => {
   const { devices, isLoading } = useGetDevices()
   if (isLoading) {
     return (
@@ -48,7 +61,7 @@ const TableDevices = ({ setDeleteDeviceModal }: { setDeleteDeviceModal: (s: numb
               <td>{device.lastConnection}</td>
               <td>{device.lon}</td>
               <td>{device.lat}</td>
-              <CommonColumn setDeleteDeviceModal={setDeleteDeviceModal} id={device.id} />
+              <CommonColumn setDeleteDeviceModal={setDeleteDeviceModal} id={device.id}  setEditDeviceModal={setEditDeviceModal}/>
             </tr>
           ))}
         </tbody>

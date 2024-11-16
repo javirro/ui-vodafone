@@ -4,5 +4,6 @@ export const endpoints = {
   getDevices: `${BASE_URL}/devices`, //GET
   getDevice: (id: number) => `${BASE_URL}/devices/${id}`, //GET
   addDevice: `${BASE_URL}/devices`, //POST
+  updateDevice: (id: number) => `${BASE_URL}/devices/${id}`, //PUT
   deleteDevice: (id: number) => `${BASE_URL}/devices/${id}`, //DELETE
 }

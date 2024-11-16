@@ -5,26 +5,28 @@
   align-items: center;
   width: 100%;
   gap: var(--size24);
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: var(--size24);
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-    button {
-      width: 70%;
-      padding: var(--size12);
-      border: none;
-      border-radius: var(--size6);
-      background-color: rgb(119, 119, 119);
-      color: white;
-      font-size: var(--size20);
-      font-weight: 600;
-      letter-spacing: 1px;
-    }
-    button:disabled {
-      opacity: 0.5;
-    }
+
+}
+
+.form-add {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size24);
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  button {
+    width: 70%;
+    padding: var(--size12);
+    border: none;
+    border-radius: var(--size6);
+    background-color: rgb(119, 119, 119);
+    color: white;
+    font-size: var(--size20);
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+  button:disabled {
+    opacity: 0.5;
   }
 }
