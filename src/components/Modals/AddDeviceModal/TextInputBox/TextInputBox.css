@@ -4,7 +4,7 @@
   justify-content: flex-start;
   align-items: flex-start;
   gap: var(--size8);
-  width: var(--size300);
+  width: 100%;
   label {
     font-size: var(--size16);
     font-weight: 700;

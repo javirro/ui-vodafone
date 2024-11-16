@@ -15,6 +15,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    gap: var(--size24);
     background-color: #fefefe;
     margin: auto;
     padding: var(--size24);
@@ -30,23 +31,25 @@
         background-color: transparent;
         border: none;
         cursor: pointer;
-        font-size: var(--size24);
+        font-size: var(--size20);
         color: black;
         &:hover {
           color: red;
         }
       }
-
+    }
+    .error-message {
+      color: red;
+      font-size: var(--size18);
+      font-weight: 500;
     }
   }
 }
 
-
 @media (min-width: 768px) {
   #modal {
     .content {
-      width: 50%;
+      width: 500px;
     }
   }
-  
 }

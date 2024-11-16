@@ -1,8 +1,10 @@
 export type Device = {
   id: number
   name: string
-  mobileNumber: number
+  phone: string
   lastConnection: number
   lat: number
   lon: number
 }
+
+export type AddDeviceForm = Omit<Device, 'id' | 'lastConnection'> & { lastConnection: Date }
