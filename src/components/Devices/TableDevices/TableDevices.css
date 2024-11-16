@@ -19,6 +19,7 @@
   tbody {
     tr {
       background-color: white;
+      cursor: pointer;
       td {
         padding: var(--size12);
         font-size: var(--size16);
@@ -27,6 +28,9 @@
     }
     tr:nth-child(even) {
       background-color: rgb(250, 247, 247);
+    }
+    tr:hover {
+      background-color: rgb(234, 232, 232);
     }
     td:last-child {
       text-align: right;

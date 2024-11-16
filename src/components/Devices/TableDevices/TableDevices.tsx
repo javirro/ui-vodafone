@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import { useGetDevices } from '../../../hooks/useGetData'
 import { images } from '../../../images/general'
 import Spinner from '../../Spinner/Spinner'
@@ -31,12 +32,16 @@ const CommonColumn = ({ setDeleteDeviceModal, setEditDeviceModal, id }: CommonCo
 
 const TableDevices = ({ setDeleteDeviceModal, setEditDeviceModal }: TableDevicesProps) => {
   const { devices, isLoading } = useGetDevices()
+  const navigate = useNavigate()
   if (isLoading) {
     return (
       <div className="devices-loading">
         <Spinner size="big" />
       </div>
     )
+  }
+  const handleNavigate = (id: number) => {
+    navigate(`/devices/${id}`)
   }
   return (
     <table id="table-devices">
@@ -55,12 +60,12 @@ const TableDevices = ({ setDeleteDeviceModal, setEditDeviceModal }: TableDevices
         <tbody>
           {devices?.map((device) => (
             <tr key={device.id}>
-              <td>{device.id}</td>
-              <td>{device.name}</td>
-              <td>{device.phone}</td>
-              <td>{device.lastConnection}</td>
-              <td>{device.lon}</td>
-              <td>{device.lat}</td>
+              <td onClick={() => handleNavigate(device.id)}>{device.id}</td>
+              <td onClick={() => handleNavigate(device.id)}>{device.name}</td>
+              <td onClick={() => handleNavigate(device.id)}>{device.phone}</td>
+              <td onClick={() => handleNavigate(device.id)}>{device.lastConnection}</td>
+              <td onClick={() => handleNavigate(device.id)}>{device.lon}</td>
+              <td onClick={() => handleNavigate(device.id)}>{device.lat}</td>
               <CommonColumn setDeleteDeviceModal={setDeleteDeviceModal} id={device.id}  setEditDeviceModal={setEditDeviceModal}/>
             </tr>
           ))}

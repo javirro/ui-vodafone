@@ -14,7 +14,7 @@ const Layout = () => {
     <QueryClientProvider client={queryClient}>
       <main className="app">
         <Navbar />
-        <Outlet /> {/* This is where the nested route components will render */}
+        <Outlet />
       </main>
     </QueryClientProvider>
   )
