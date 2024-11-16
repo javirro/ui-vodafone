@@ -1,15 +1,18 @@
 import { images } from '../../../images/general'
 import './TableDevices.css'
 
-const CommonColumn = () => {
-  return(
+const CommonColumn = ({ setDeleteDeviceModal, id }: { setDeleteDeviceModal: (s: number) => void; id: number }) => {
+  const handleDelete = () => {
+    setDeleteDeviceModal(id)
+  }
+  return (
     <td>
       <img src={images.editIcon} alt="edit" />
-      <img src={images.deleteIcon} alt="delete" />
+      <img src={images.deleteIcon} alt="delete" onClick={handleDelete} />
     </td>
   )
 }
-const TableDevices = () => {
+const TableDevices = ({ setDeleteDeviceModal }: { setDeleteDeviceModal: (s: number) => void }) => {
   return (
     <table id="table-devices">
       <thead>
@@ -31,7 +34,7 @@ const TableDevices = () => {
           <td>2021-09-01</td>
           <td>1.234</td>
           <td>5.678</td>
-          <CommonColumn />
+          <CommonColumn setDeleteDeviceModal={setDeleteDeviceModal} id={1} />
         </tr>
         <tr>
           <td>2</td>
@@ -40,7 +43,7 @@ const TableDevices = () => {
           <td>2021-09-02</td>
           <td>5.678</td>
           <td>1.234</td>
-          <CommonColumn />
+          <CommonColumn setDeleteDeviceModal={setDeleteDeviceModal} id={1} />
         </tr>
         <tr>
           <td>3</td>
@@ -49,7 +52,7 @@ const TableDevices = () => {
           <td>2021-09-03</td>
           <td>9.876</td>
           <td>3.214</td>
-          <CommonColumn />
+          <CommonColumn setDeleteDeviceModal={setDeleteDeviceModal} id={1} />
         </tr>
         <tr>
           <td>3</td>
@@ -58,7 +61,7 @@ const TableDevices = () => {
           <td>2021-09-03</td>
           <td>9.876</td>
           <td>3.214</td>
-          <CommonColumn />
+          <CommonColumn setDeleteDeviceModal={setDeleteDeviceModal} id={1} />
         </tr>
       </tbody>
     </table>

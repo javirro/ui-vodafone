@@ -5,10 +5,12 @@ import TableDevices from '../../components/Devices/TableDevices/TableDevices'
 import AddDeviceModal from '../../components/Modals/AddDeviceModal/AddDeviceModal'
 
 import './Devices.css'
+import DeleteDeviceModal from '../../components/Modals/DeleteDeviceModal/DeleteDeviceModal'
 
 
 const Devices = () => {
   const [addDeviceModal, setAddDeviceModal] = useState(true)
+  const [deleteDeviceModal, setDeleteDeviceModal] = useState<number>(0)
   const [limit, setLimit] = useState(10)
   const [page, setPage] = useState(1)
 
@@ -22,6 +24,7 @@ const Devices = () => {
   return (
     <section className="page">
       {addDeviceModal && <AddDeviceModal closeModal={closeModal} />}
+      {deleteDeviceModal > 0 && <DeleteDeviceModal closeModal={closeModal} deviceId={deleteDeviceModal} />}
       <div className="devices">
         <div className="options">
           <button className="actions" onClick={() => setAddDeviceModal(true)}>
@@ -39,7 +42,7 @@ const Devices = () => {
             <PageSelector page={page} setPage={setPage} />
           </section>
         </div>
-        <TableDevices />
+        <TableDevices setDeleteDeviceModal = {setDeleteDeviceModal}/>
       </div>
     </section>
   )

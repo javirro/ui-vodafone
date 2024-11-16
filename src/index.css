@@ -30,6 +30,7 @@
   --size80: 5rem;
   --size88: 5.5rem;
   --size96: 6rem;
+  --size150: 9.375rem;
   --size200: 12.5rem;
   --size300: 18.75rem;
 }
@@ -62,6 +63,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: Inter;
 }
 
 

@@ -1,0 +1,40 @@
+.delete-device-modal-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: var(--size40);
+  background-color: #fefefe;
+  padding: var(--size24);
+  width: 100%;
+  border-radius: var(--size12);
+  p {
+    font-size: var(--size20);
+    color: black;
+  }
+  .buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--size24);
+    width: 100%;
+    button {
+      font-family: Inter;
+      width: var(--size150);
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      font-size: var(--size20);
+      color: black;
+      &:hover {
+        color: red;
+      }
+    }
+    button:last-child {
+      color: white;
+      background-color: rgb(251, 41, 41);
+      padding: var(--size12) var(--size24);
+      border-radius: var(--size6);
+    }
+  }
+}
