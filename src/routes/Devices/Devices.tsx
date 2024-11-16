@@ -24,7 +24,9 @@ const Devices = () => {
   return (
     <section className="page">
       {addDeviceModal && <AddDeviceModal closeModal={() => setAddDeviceModal(false)} refreshDevices={refreshDevices} />}
-      {deleteDeviceModal > 0 && <DeleteDeviceModal closeModal={() => setDeleteDeviceModal(0)} deviceId={deleteDeviceModal} />}
+      {deleteDeviceModal > 0 && (
+        <DeleteDeviceModal closeModal={() => setDeleteDeviceModal(0)} deviceId={deleteDeviceModal} refreshDevices={refreshDevices} />
+      )}
       <div className="devices">
         <div className="options">
           <button className="actions" onClick={() => setAddDeviceModal(true)}>

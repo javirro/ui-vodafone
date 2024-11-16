@@ -5,15 +5,18 @@ import './DeleteDeviceModal.css'
 interface DeleteDeviceModalProps {
   deviceId: number
   closeModal: () => void
+  refreshDevices: () => void
 }
 
-const DeleteDeviceModalContent = ({ deviceId, closeModal }: DeleteDeviceModalProps) => {
+const DeleteDeviceModalContent = ({ deviceId, closeModal, refreshDevices }: DeleteDeviceModalProps) => {
   const handleDelete = async () => {
     try {
       await deleteDevice(deviceId)
       closeModal()
     } catch (error) {
       console.error('Error deleting device', error)
+    } finally{
+      refreshDevices()
     }
   }
 
@@ -28,10 +31,10 @@ const DeleteDeviceModalContent = ({ deviceId, closeModal }: DeleteDeviceModalPro
   )
 }
 
-const DeleteDeviceModal = ({ deviceId, closeModal }: DeleteDeviceModalProps) => {
+const DeleteDeviceModal = ({ deviceId, closeModal, refreshDevices }: DeleteDeviceModalProps) => {
   return (
     <BaseModal title="Delete device" closeModal={closeModal}>
-      <DeleteDeviceModalContent deviceId={deviceId} closeModal={closeModal} />
+      <DeleteDeviceModalContent deviceId={deviceId} closeModal={closeModal} refreshDevices={refreshDevices}/>
     </BaseModal>
   )
 }
