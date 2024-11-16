@@ -23,6 +23,9 @@ const Devices = () => {
 
   return (
     <section className="page">
+            <header className="home-header full">
+        <h1>Devices details</h1>
+      </header>
       {addDeviceModal && <AddDeviceModal closeModal={() => setAddDeviceModal(false)} refreshDevices={refreshDevices} />}
       {deleteDeviceModal > 0 && (
         <DeleteDeviceModal closeModal={() => setDeleteDeviceModal(0)} deviceId={deleteDeviceModal} refreshDevices={refreshDevices} />

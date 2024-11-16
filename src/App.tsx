@@ -1,10 +1,12 @@
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom'
 import Home from './routes/Home/Home'
 import Devices from './routes/Devices/Devices'
+import DeviceDetails from './routes/Device/DeviceDetails'
 import Navbar from './components/Navbar/Navbar'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 import './App.css'
+
 
 const Layout = () => {
   const queryClient = new QueryClient()
@@ -31,6 +33,10 @@ function App() {
           path: '/devices',
           element: <Devices />,
         },
+        {
+          path: '/devices/:id',
+          element: <DeviceDetails />,
+        }
       ],
     },
   ])

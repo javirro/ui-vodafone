@@ -1,7 +1,21 @@
+.home-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  height: 60px;
+  background-color: #f8f9fa;
+  h1 {
+    font-size: var(--size36);
+  }
+}
+.home-header.full {
+  width: 100%;
+}
 .map-box {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 80%;
   height: 500px;
 }
