@@ -1,19 +1,22 @@
 import { useNavigate } from 'react-router-dom'
-import { useGetDevices } from '../../../hooks/useGetData'
+import { useGetPaginatedDevices } from '../../../hooks/useGetData'
 import { images } from '../../../images/general'
 import Spinner from '../../Spinner/Spinner'
 
 import './TableDevices.css'
 
-interface TableDevicesProps {
+interface BaseTableProps {
   setDeleteDeviceModal: (s: number) => void
   setEditDeviceModal: (s: number) => void
 }
-
-interface CommonColumnProps extends TableDevicesProps {
-  id: number
+interface TableDevicesProps extends BaseTableProps {
+  page: number
+  limit: number
 }
 
+interface CommonColumnProps extends BaseTableProps {
+  id: number
+}
 
 const CommonColumn = ({ setDeleteDeviceModal, setEditDeviceModal, id }: CommonColumnProps) => {
   const handleDelete = () => {
@@ -24,14 +27,14 @@ const CommonColumn = ({ setDeleteDeviceModal, setEditDeviceModal, id }: CommonCo
   }
   return (
     <td>
-      <img src={images.editIcon} alt="edit" onClick={handleEdit}/>
+      <img src={images.editIcon} alt="edit" onClick={handleEdit} />
       <img src={images.deleteIcon} alt="delete" onClick={handleDelete} />
     </td>
   )
 }
 
-const TableDevices = ({ setDeleteDeviceModal, setEditDeviceModal }: TableDevicesProps) => {
-  const { devices, isLoading } = useGetDevices()
+const TableDevices = ({ setDeleteDeviceModal, setEditDeviceModal, page, limit }: TableDevicesProps) => {
+  const { devices, isLoading } = useGetPaginatedDevices(page, limit)
   const navigate = useNavigate()
   if (isLoading) {
     return (
@@ -66,7 +69,7 @@ const TableDevices = ({ setDeleteDeviceModal, setEditDeviceModal }: TableDevices
               <td onClick={() => handleNavigate(device.id)}>{device.lastConnection}</td>
               <td onClick={() => handleNavigate(device.id)}>{device.lon}</td>
               <td onClick={() => handleNavigate(device.id)}>{device.lat}</td>
-              <CommonColumn setDeleteDeviceModal={setDeleteDeviceModal} id={device.id}  setEditDeviceModal={setEditDeviceModal}/>
+              <CommonColumn setDeleteDeviceModal={setDeleteDeviceModal} id={device.id} setEditDeviceModal={setEditDeviceModal} />
             </tr>
           ))}
         </tbody>

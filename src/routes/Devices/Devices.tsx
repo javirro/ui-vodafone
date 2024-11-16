@@ -8,7 +8,6 @@ import EditDeviceModal from '../../components/Modals/EditDeviceModal/EditDeviceM
 
 import './Devices.css'
 
-
 const Devices = () => {
   const [addDeviceModal, setAddDeviceModal] = useState(false)
   const [deleteDeviceModal, setDeleteDeviceModal] = useState<number>(0)
@@ -16,6 +15,7 @@ const Devices = () => {
   const [limit, setLimit] = useState(10)
   const [page, setPage] = useState(1)
   const [refreshDeviceTable, setRefreshDeviceTable] = useState(0)
+
   const handleLimit = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setLimit(Number(e.target.value))
   }
@@ -24,7 +24,6 @@ const Devices = () => {
     setRefreshDeviceTable((prev) => prev + 1)
   }
 
-  console.log({editDeviceModal})
   return (
     <section className="page">
       <header className="home-header full">
@@ -54,7 +53,7 @@ const Devices = () => {
             <PageSelector page={page} setPage={setPage} />
           </section>
         </div>
-        <TableDevices setDeleteDeviceModal={setDeleteDeviceModal}  setEditDeviceModal={setEditDeviceModal} key={refreshDeviceTable} />
+        <TableDevices setDeleteDeviceModal={setDeleteDeviceModal}  setEditDeviceModal={setEditDeviceModal} page={page} limit={limit}key={refreshDeviceTable} />
       </div>
     </section>
   )
