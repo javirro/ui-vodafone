@@ -1,0 +1,24 @@
+.device-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: var(--size16);
+  width: var(--size400);
+  padding: var(--size16);
+  background-color: rgb(255, 64, 42);
+  border-radius: var(--size12);
+  h2 {
+    font-size: var(--size36);
+    text-transform: uppercase;
+  }
+  p {
+    font-size: var(--size20);
+    padding: var(--size16);
+    border-bottom: 1px solid #f8f9fa;
+    background-color: #f8f9fa;
+    width: 100%;
+    border-radius: var(--size6);
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+}
