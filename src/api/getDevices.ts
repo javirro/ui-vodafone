@@ -7,8 +7,8 @@ export const getDevices = async (): Promise<Device[]> => {
   if (!response.ok) {
     throw new Error('Error fetching devices')
   }
-  const data = await response.json()
-  return data.devices
+  const devices = await response.json()
+  return devices
 }
 
 export const getDevice = async (id: number): Promise<Device> => {
@@ -17,6 +17,6 @@ export const getDevice = async (id: number): Promise<Device> => {
   if (!response.ok) {
     throw new Error('Error fetching device')
   }
-  const data = await response.json()
-  return data.device
+  const device = await response.json()
+  return device
 }

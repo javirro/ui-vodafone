@@ -2,7 +2,8 @@ import { AddDeviceForm } from '../types/types'
 import { endpoints } from './endpoints'
 
 export const addDevice = async (data: AddDeviceForm) => {
-  const unixTimestamp = Math.floor(data.lastConnection.getTime() / 1000)
+  console.log(data.lastConnection)
+  const unixTimestamp = Math.floor(new Date(data.lastConnection).getTime() / 1000)
   const options = {
     method: 'POST',
     headers: {

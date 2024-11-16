@@ -8,18 +8,22 @@ import DeleteDeviceModal from '../../components/Modals/DeleteDeviceModal/DeleteD
 import './Devices.css'
 
 const Devices = () => {
-  const [addDeviceModal, setAddDeviceModal] = useState(true)
+  const [addDeviceModal, setAddDeviceModal] = useState(false)
   const [deleteDeviceModal, setDeleteDeviceModal] = useState<number>(0)
   const [limit, setLimit] = useState(10)
   const [page, setPage] = useState(1)
-
+  const [refreshDeviceTable, setRefreshDeviceTable] = useState(0)
   const handleLimit = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setLimit(Number(e.target.value))
   }
 
+  const refreshDevices = () => {
+    setRefreshDeviceTable((prev) => prev + 1)
+  }
+
   return (
     <section className="page">
-      {addDeviceModal && <AddDeviceModal closeModal={() => setAddDeviceModal(false)} />}
+      {addDeviceModal && <AddDeviceModal closeModal={() => setAddDeviceModal(false)} refreshDevices={refreshDevices} />}
       {deleteDeviceModal > 0 && <DeleteDeviceModal closeModal={() => setDeleteDeviceModal(0)} deviceId={deleteDeviceModal} />}
       <div className="devices">
         <div className="options">
@@ -38,7 +42,7 @@ const Devices = () => {
             <PageSelector page={page} setPage={setPage} />
           </section>
         </div>
-        <TableDevices setDeleteDeviceModal={setDeleteDeviceModal} />
+        <TableDevices setDeleteDeviceModal={setDeleteDeviceModal} key={refreshDeviceTable} />
       </div>
     </section>
   )

@@ -10,9 +10,10 @@ import './AddDeviceModal.css'
 
 interface AddDeviceModalProps {
   closeModal: () => void
+  refreshDevices: () => void
 }
 
-const AddDeviceModalContent = () => {
+const AddDeviceModalContent = ({ refreshDevices, closeModal }: AddDeviceModalProps) => {
   const { error, setError, loading, setLoading } = useErrorLoading(5000)
   const [data, setData] = useState<AddDeviceForm>({
     name: '',
@@ -31,10 +32,12 @@ const AddDeviceModalContent = () => {
     try {
       setLoading(true)
       await addDevice(data)
+      refreshDevices()
     } catch (error) {
       console.error('Error adding device', error)
       setError(true)
     } finally {
+      if(!error) closeModal()
       setLoading(false)
     }
   }
@@ -75,18 +78,20 @@ const AddDeviceModalContent = () => {
           step={0.0001}
         />
 
-        <button type="submit" disabled={loading}>Add Device</button>
+        <button type="submit" disabled={loading}>
+          Add Device
+        </button>
       </form>
       {error && <p className="error-message">An error occurred while adding the device</p>}
-      {loading && <Spinner size={"small"} />}
+      {loading && <Spinner size={'small'} />}
     </div>
   )
 }
 
-const AddDeviceModal = ({ closeModal }: AddDeviceModalProps) => {
+const AddDeviceModal = ({ closeModal, refreshDevices }: AddDeviceModalProps) => {
   return (
     <BaseModal title="Add Device" closeModal={closeModal}>
-      <AddDeviceModalContent />
+      <AddDeviceModalContent refreshDevices={refreshDevices} closeModal={closeModal}/>
     </BaseModal>
   )
 }

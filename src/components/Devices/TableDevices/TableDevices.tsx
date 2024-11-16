@@ -1,4 +1,7 @@
+import { useGetDevices } from '../../../hooks/useGetData'
 import { images } from '../../../images/general'
+import Spinner from '../../Spinner/Spinner'
+
 import './TableDevices.css'
 
 const CommonColumn = ({ setDeleteDeviceModal, id }: { setDeleteDeviceModal: (s: number) => void; id: number }) => {
@@ -12,7 +15,16 @@ const CommonColumn = ({ setDeleteDeviceModal, id }: { setDeleteDeviceModal: (s: 
     </td>
   )
 }
+
 const TableDevices = ({ setDeleteDeviceModal }: { setDeleteDeviceModal: (s: number) => void }) => {
+  const { devices, isLoading } = useGetDevices()
+  if (isLoading) {
+    return (
+      <div className="devices-loading">
+        <Spinner size="big" />
+      </div>
+    )
+  }
   return (
     <table id="table-devices">
       <thead>
@@ -26,44 +38,21 @@ const TableDevices = ({ setDeleteDeviceModal }: { setDeleteDeviceModal: (s: numb
           <th>Actions</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td>Device 1</td>
-          <td>123456789</td>
-          <td>2021-09-01</td>
-          <td>1.234</td>
-          <td>5.678</td>
-          <CommonColumn setDeleteDeviceModal={setDeleteDeviceModal} id={1} />
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Device 2</td>
-          <td>987654321</td>
-          <td>2021-09-02</td>
-          <td>5.678</td>
-          <td>1.234</td>
-          <CommonColumn setDeleteDeviceModal={setDeleteDeviceModal} id={1} />
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>Device 3</td>
-          <td>456789123</td>
-          <td>2021-09-03</td>
-          <td>9.876</td>
-          <td>3.214</td>
-          <CommonColumn setDeleteDeviceModal={setDeleteDeviceModal} id={1} />
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>Device 3</td>
-          <td>456789123</td>
-          <td>2021-09-03</td>
-          <td>9.876</td>
-          <td>3.214</td>
-          <CommonColumn setDeleteDeviceModal={setDeleteDeviceModal} id={1} />
-        </tr>
-      </tbody>
+      {!isLoading && (
+        <tbody>
+          {devices?.map((device) => (
+            <tr key={device.id}>
+              <td>{device.id}</td>
+              <td>{device.name}</td>
+              <td>{device.phone}</td>
+              <td>{device.lastConnection}</td>
+              <td>{device.lon}</td>
+              <td>{device.lat}</td>
+              <CommonColumn setDeleteDeviceModal={setDeleteDeviceModal} id={device.id} />
+            </tr>
+          ))}
+        </tbody>
+      )}
     </table>
   )
 }
