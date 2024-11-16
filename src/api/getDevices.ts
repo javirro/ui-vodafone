@@ -30,3 +30,13 @@ export const getDevicesPaginated = async (page: number, limit: number): Promise<
   const devices = await response.json()
   return devices
 }
+
+export const getTotal = async (): Promise<number> => {
+  const url = endpoints.totalDevices
+  const response = await fetch(url)
+  if (!response.ok) {
+    throw new Error('Error fetching total devices')
+  }
+  const total = await response.json()
+  return total
+}

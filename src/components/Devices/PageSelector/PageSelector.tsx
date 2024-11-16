@@ -1,13 +1,21 @@
+import { useGetTotalDevices } from '../../../hooks/useGetData'
 import { images } from '../../../images/general'
 import './PageSelector.css'
 
 interface PageSelectorProps {
   page: number
   setPage: (page: number) => void
+  limit: number
 }
 
-const PageSelector = ({ page, setPage }: PageSelectorProps) => {
-  const totalPages = 10
+const PageSelector = ({ page, setPage, limit }: PageSelectorProps) => {
+  const { totalDevices } = useGetTotalDevices()
+
+  if (!totalDevices) {
+    return null
+  }
+  const totalPages = Math.ceil(totalDevices / limit)
+
   const handlePage = (move: 'left' | 'right') => {
     if (move === 'left' && page > 1) {
       setPage(page - 1)

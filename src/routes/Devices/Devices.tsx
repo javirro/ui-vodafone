@@ -50,7 +50,7 @@ const Devices = () => {
               <option value="30">30</option>
             </select>
             <span>rows</span>
-            <PageSelector page={page} setPage={setPage} />
+            <PageSelector page={page} setPage={setPage} limit={limit}/>
           </section>
         </div>
         <TableDevices setDeleteDeviceModal={setDeleteDeviceModal}  setEditDeviceModal={setEditDeviceModal} page={page} limit={limit}key={refreshDeviceTable} />

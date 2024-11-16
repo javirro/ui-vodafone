@@ -7,4 +7,5 @@ export const endpoints = {
   addDevice: `${BASE_URL}/devices`, //POST
   updateDevice: (id: number) => `${BASE_URL}/devices/${id}`, //PUT
   deleteDevice: (id: number) => `${BASE_URL}/devices/${id}`, //DELETE
+  totalDevices: `${BASE_URL}/devices/total`, //GET
 }

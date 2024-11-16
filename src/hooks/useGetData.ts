@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { getDevice, getDevices, getDevicesPaginated } from '../api/getDevices'
+import { getDevice, getDevices, getDevicesPaginated, getTotal } from '../api/getDevices'
 import { Device } from '../types/types'
 
 export const useGetDevices = () => {
@@ -30,7 +30,6 @@ export const useGetDevice = (id: number) => {
   return { device, isLoading, isError, refetch }
 }
 
-
 export const useGetPaginatedDevices = (page: number, limit: number) => {
   const {
     data: devices,
@@ -43,4 +42,13 @@ export const useGetPaginatedDevices = (page: number, limit: number) => {
   })
 
   return { devices, isLoading, isError, refetch }
+}
+
+export const useGetTotalDevices = () => {
+  const { data: totalDevices, isLoading } = useQuery<number>({
+    queryKey: ['totalDevices'],
+    queryFn: async () => await getTotal(),
+  })
+
+  return { totalDevices, isLoading }
 }
