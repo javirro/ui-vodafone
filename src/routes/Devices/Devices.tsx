@@ -7,6 +7,7 @@ import DeleteDeviceModal from '../../components/Modals/DeleteDeviceModal/DeleteD
 import EditDeviceModal from '../../components/Modals/EditDeviceModal/EditDeviceModal'
 import MobileDevicesList from '../../components/Devices/MobileDevicesList/MobileDevicesList'
 import useCurrentDimensions, { MOBILE_WIDTH } from '../../hooks/useCurrentDimensions'
+import MetaTags from '../../components/MetaTags/MetaTags'
 
 import './Devices.css'
 
@@ -29,6 +30,7 @@ const Devices = () => {
 
   return (
     <section className="page">
+      <MetaTags title="Vodafone Iot: Devices List" />
       <header className="home-header full">
         <h1>Devices details</h1>
       </header>

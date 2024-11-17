@@ -1,14 +1,16 @@
 import { useParams } from 'react-router-dom'
 import { useGetDevice } from '../../hooks/useGetData'
 import Spinner from '../../components/Spinner/Spinner'
-
+import MetaTags from '../../components/MetaTags/MetaTags'
 import './DeviceDetails.css'
+
 
 const DeviceDetails = () => {
   const { id } = useParams<{ id: string }>()
   const { device, isLoading } = useGetDevice(Number(id))
   return (
     <section className="page">
+      {device && <MetaTags title={`Vodafone device: ${device?.name}`} />}
       {isLoading && <Spinner size="big" />}
       {device && !isLoading && (
         <div className="device-details">
