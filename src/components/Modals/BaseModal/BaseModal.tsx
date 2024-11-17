@@ -9,7 +9,7 @@ const BaseModal = ({ closeModal, title, children }: BaseModalProps) => {
   return (
     <div id="modal">
       <div className="content">
-        <header>
+        <header className='header-modal'>
           <h2>{title}</h2>
           <button className="close" onClick={closeModal}>
             Close
