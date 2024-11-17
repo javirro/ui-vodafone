@@ -16,6 +16,7 @@
   width: 100%;
   padding: var(--size24);
   position: relative;
+  overflow-x: hidden;
 }
 
 @media screen and (max-width: 768px) {
