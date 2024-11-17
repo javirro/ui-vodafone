@@ -1,5 +1,5 @@
 const BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000'
-
+console.log('BASE_URL', BASE_URL)
 export const endpoints = {
   getDevices: `${BASE_URL}/devices`, //GET
   getDevice: (id: number) => `${BASE_URL}/devices/${id}`, //GET
