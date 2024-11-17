@@ -44,3 +44,30 @@
     }
   }
 }
+
+@media screen and (max-width: 768px) {
+  .devices {
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: var(--size20);
+      .actions {
+        width: 100%;
+        padding: var(--size12);
+        font-size: var(--size20);
+        img {
+          width: var(--size32);
+        }
+      }
+      .right {
+        gap: var(--size12);
+        font-size: var(--size16);
+        select {
+          width: var(--size60);
+          padding: var(--size12);
+          font-size: var(--size14);
+        }
+      }
+    }
+  }
+}
