@@ -7,7 +7,7 @@ interface BaseModalProps {
 }
 const BaseModal = ({ closeModal, title, children }: BaseModalProps) => {
   return (
-    <div id="modal">
+    <div id="base-modal">
       <div className="content">
         <header className='header-modal'>
           <h2>{title}</h2>

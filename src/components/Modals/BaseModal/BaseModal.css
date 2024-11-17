@@ -1,4 +1,4 @@
-#modal {
+#base-modal {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -50,7 +50,7 @@
 }
 
 @media (min-width: 768px) {
-  #modal {
+  #base-modal {
     .content {
       width: 500px;
     }
