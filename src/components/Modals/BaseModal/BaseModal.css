@@ -13,7 +13,7 @@
   overflow-x: hidden;
   background-color: rgba(0, 0, 0, 0.8);
   .content {
-    display: flex;
+    display: flex !important; /* !important is used to override user-agent styleshee which some browsers have */
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
