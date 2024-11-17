@@ -5,8 +5,11 @@ import TableDevices from '../../components/Devices/TableDevices/TableDevices'
 import AddDeviceModal from '../../components/Modals/AddDeviceModal/AddDeviceModal'
 import DeleteDeviceModal from '../../components/Modals/DeleteDeviceModal/DeleteDeviceModal'
 import EditDeviceModal from '../../components/Modals/EditDeviceModal/EditDeviceModal'
+import MobileDevicesList from '../../components/Devices/MobileDevicesList/MobileDevicesList'
+import useCurrentDimensions, { MOBILE_WIDTH } from '../../hooks/useCurrentDimensions'
 
 import './Devices.css'
+
 
 const Devices = () => {
   const [addDeviceModal, setAddDeviceModal] = useState(false)
@@ -15,7 +18,7 @@ const Devices = () => {
   const [limit, setLimit] = useState(10)
   const [page, setPage] = useState(1)
   const [refreshDeviceTable, setRefreshDeviceTable] = useState(0)
-
+  const { width } = useCurrentDimensions()
   const handleLimit = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setLimit(Number(e.target.value))
   }
@@ -34,7 +37,13 @@ const Devices = () => {
         <DeleteDeviceModal closeModal={() => setDeleteDeviceModal(0)} deviceId={deleteDeviceModal} refreshDevices={refreshDevices} />
       )}
       {editDeviceModal > 0 && (
-        <EditDeviceModal closeModal={() => {setEditDeviceModal(0)}} deviceId={editDeviceModal} refreshDevices={refreshDevices} />
+        <EditDeviceModal
+          closeModal={() => {
+            setEditDeviceModal(0)
+          }}
+          deviceId={editDeviceModal}
+          refreshDevices={refreshDevices}
+        />
       )}
       <div className="devices">
         <div className="options">
@@ -50,10 +59,26 @@ const Devices = () => {
               <option value="30">30</option>
             </select>
             <span>rows</span>
-            <PageSelector page={page} setPage={setPage} limit={limit}/>
+            <PageSelector page={page} setPage={setPage} limit={limit} />
           </section>
         </div>
-        <TableDevices setDeleteDeviceModal={setDeleteDeviceModal}  setEditDeviceModal={setEditDeviceModal} page={page} limit={limit}key={refreshDeviceTable} />
+        {width > MOBILE_WIDTH ? (
+          <TableDevices
+            setDeleteDeviceModal={setDeleteDeviceModal}
+            setEditDeviceModal={setEditDeviceModal}
+            page={page}
+            limit={limit}
+            key={refreshDeviceTable}
+          />
+        ) : (
+          <MobileDevicesList
+            setDeleteDeviceModal={setDeleteDeviceModal}
+            setEditDeviceModal={setEditDeviceModal}
+            page={page}
+            limit={limit}
+            key={refreshDeviceTable}
+          />
+        )}
       </div>
     </section>
   )

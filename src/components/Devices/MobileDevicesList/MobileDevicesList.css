@@ -1,0 +1,28 @@
+.mobile-devices-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  .item-box {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-bottom: 3px solid rgb(255, 181, 181);
+    gap: var(--size12);
+    padding-bottom: var(--size12);
+  }
+  .row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: var(--size6);
+    span:first-child {
+      font-weight: bold;
+    }
+    img {
+      width: var(--size24);
+      cursor: pointer;
+    }
+  }
+
+}

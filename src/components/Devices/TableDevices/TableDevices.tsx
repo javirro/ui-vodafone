@@ -9,7 +9,7 @@ interface BaseTableProps {
   setDeleteDeviceModal: (s: number) => void
   setEditDeviceModal: (s: number) => void
 }
-interface TableDevicesProps extends BaseTableProps {
+export interface TableDevicesProps extends BaseTableProps {
   page: number
   limit: number
 }
