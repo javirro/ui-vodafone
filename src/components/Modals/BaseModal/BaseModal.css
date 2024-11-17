@@ -22,9 +22,10 @@
     margin: auto;
     padding: var(--size24);
     border: 1px solid #888;
-    width: 100%;
+    width: 500px;
     max-width: 100%;
     border-radius: var(--size12);
+    animation: moveFromLeft 0.5s ease-in-out;
     .header-modal {
       display: flex !important;
       justify-content: space-between;
@@ -49,12 +50,19 @@
   }
 }
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
   #base-modal {
     .content {
-      width: 500px;
+      width: 100%;
     }
   }
 }
 
-
+@keyframes moveFromLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
