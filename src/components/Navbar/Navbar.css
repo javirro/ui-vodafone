@@ -51,3 +51,31 @@ nav {
     }
   }
 }
+
+
+@media screen and (max-width: 768px) {
+  nav {
+    .content {
+      .upper {
+        padding: var(--size4);
+        span {
+          font-size: var(--size12);
+        }
+      }
+      .lower {
+        padding: var(--size8);
+        .left {
+          gap: var(--size12);
+          img {
+            width: var(--size32);
+            height: var(--size32);
+          }
+          .link {
+            font-size: var(--size16);
+          }
+        }
+      }
+    }
+  }
+  
+}

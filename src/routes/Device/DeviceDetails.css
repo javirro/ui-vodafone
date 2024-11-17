@@ -22,3 +22,17 @@
     box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
   }
 }
+
+@media screen and (max-width: 768px) {
+  .device-details {
+    width: 100%;
+    padding: var(--size8);
+    h2 {
+      font-size: var(--size24);
+    }
+    p {
+      font-size: var(--size16);
+      padding: var(--size8);
+    }
+  }
+}

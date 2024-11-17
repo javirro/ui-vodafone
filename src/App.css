@@ -17,3 +17,9 @@
   padding: var(--size24);
   position: relative;
 }
+
+@media screen and (max-width: 768px) {
+  .page {
+    padding: var(--size6);
+  }
+}

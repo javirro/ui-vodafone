@@ -19,3 +19,16 @@
   width: 80%;
   height: 500px;
 }
+
+@media screen and (max-width: 768px) {
+  .home-header {
+    width: 100%;
+    h1 {
+      font-size: var(--size24);
+    }
+  }
+  .map-box {
+    width: 100%;
+    height: 450px;
+  }
+}
